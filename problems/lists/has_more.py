@@ -1,3 +1,20 @@
+def count_target(lst, target):
+    """
+    Determine number of occurrences of target value in list. 
+
+    Inputs:
+        lst [lst[int]]: list
+        target [int]: the target value
+
+    Returns [int]: number of occurrences of target value in list.
+    """
+    count = 0
+    for element in lst:
+        if element == target:
+            count += 1
+    
+    return count
+
 def has_more(lst1, lst2, target):
     """
     Determine which list contains more of the target value
@@ -7,9 +24,10 @@ def has_more(lst1, lst2, target):
       target: the target value
     Returns: True if lst1 contains more of target, False otherwise
     """
+    count1 = count_target(lst1, target)
+    count2 = count_target(lst2, target)
 
-    ### Replace pass with your code
-    pass
+    return count1 > count2
 
 
 #############################################################
