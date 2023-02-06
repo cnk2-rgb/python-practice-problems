@@ -8,10 +8,15 @@ def num_divisible(lb, ub, p, q):
     # Replace the following line with your code.
     # After running your code, variable n should contain the value
     # we ask you to compute in this exercise.
-    n = None
+    n = 0
+    for i in range(lb, ub + 1):
+        cond1 = (i % p == 0) or (i % q == 0)
+        cond2 = (i % p == 0) and (i % q == 0)
+        if cond1 and (not cond2):
+            n += 1
 
     ### DO NOT MODIFY THE FOLLOWING LINE!
-    return 
+    return n
 
 
 #############################################################

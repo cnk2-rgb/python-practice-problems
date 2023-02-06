@@ -6,10 +6,14 @@ def peep(p, e):
       e (int): second digit
     Returns: True if peep = pp^e, False otherwise
     """
+    digit_p = str(p)
+    digit_e = str(e)
 
-    ### Replace pass with your code
-    pass
+    peep = int(str(p) + str(e) * 2 + str(p))
+    print(peep)
+    expression = (int(str(p) * 2)) ** e
 
+    return peep == expression
 
 #############################################################
 ###                                                       ###
