@@ -7,7 +7,12 @@ def sublists(lst):
     Returns: (list of list of values) list of all sublists of lst.
     """
 
-    pass
+    if lst == []:
+        return [[]]
+    else:
+        first, *rest = lst
+        rest_subs = [[first] + sub for sub in sublists(rest)]
+        return rest_subs + sublists(rest)
 
 
 #############################################################
