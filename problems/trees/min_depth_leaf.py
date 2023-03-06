@@ -9,9 +9,13 @@ def min_depth_leaf(tree):
     
     Returns: (integer) the minimum depth of of a leaf in the tree.
     """
-
-    pass
-
+    if tree.children == []:
+        return 0
+    else:
+        subtree_heights = []
+        for child in tree.children:
+            subtree_heights.append(min_depth_leaf(child))
+        return 1 + min(subtree_heights)
 
 #############################################################
 ###                                                       ###
