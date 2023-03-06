@@ -13,9 +13,27 @@ def prune_tree(tree, keys_to_discard):
     
     Returns: (Tree) the pruned tree.
     '''
-    
-    pass
+    #generate copy
+    pruned_tree = tree
+    print(pruned_tree is tree)
+    if pruned_tree.children == []:
+        return tree
+    for i, child in enumerate(pruned_tree.children):
+        if child.key in keys_to_discard:
+            print("discarding", child.key)
+            del pruned_tree.children[i]
+            return prune_tree(pruned_tree, keys_to_discard)
+        else:
+            return prune_tree(child, keys_to_discard)
 
+    """
+    if pruned_tree.key in keys_to_discard:
+        
+    else:
+        for child in tree.children:
+            tree = prune_tree(child, keys_to_discard)
+            return tree 
+    """
 
 #############################################################
 ###                                                       ###
