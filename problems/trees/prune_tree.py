@@ -15,15 +15,17 @@ def prune_tree(tree, keys_to_discard):
     '''
     #generate copy
     pruned_tree = tree
-    print(pruned_tree is tree)
     if pruned_tree.children == []:
-        return tree
+        pruned_tree.print()
+        return pruned_tree
     for i, child in enumerate(pruned_tree.children):
         if child.key in keys_to_discard:
             print("discarding", child.key)
             del pruned_tree.children[i]
+            pruned_tree.print()
             return prune_tree(pruned_tree, keys_to_discard)
         else:
+            pruned_tree.print()
             return prune_tree(child, keys_to_discard)
 
     """
