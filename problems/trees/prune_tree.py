@@ -13,8 +13,7 @@ def prune_tree(tree, keys_to_discard):
     
     Returns: (Tree) the pruned tree.
     '''
-    #generate copy
-    pruned_tree = tree
+    prined_tree = Tree(tree.key, tree.val)
     if pruned_tree.children == []:
         pruned_tree.print()
         return pruned_tree
@@ -27,7 +26,8 @@ def prune_tree(tree, keys_to_discard):
         else:
             pruned_tree.print()
             return prune_tree(child, keys_to_discard)
-
+    #add keys you want to add
+    #compare original key to keys to discard, then modify copy of tree
     """
     if pruned_tree.key in keys_to_discard:
         

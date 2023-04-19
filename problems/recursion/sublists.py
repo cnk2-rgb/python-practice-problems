@@ -11,8 +11,22 @@ def sublists(lst):
         return [[]]
     else:
         first, *rest = lst
+        print("sublists of rest:", sublists(rest))
+        first_plus_rest_subs = []
+        for sub in sublists(rest):
+            first_plus_rest_subs.append([first] + sub)
+
+        print("first_plus_rest_subs:", first_plus_rest_subs)
+        return first_plus_rest_subs + sublists(rest)
+
+        """
+        print("first:", first)
+        print("rest:", rest)
         rest_subs = [[first] + sub for sub in sublists(rest)]
-        return rest_subs + sublists(rest)
+        print("sublists of rest:", rest_subs)
+        print("return:", rest_subs + sublists(rest))
+        """
+        #return rest_subs + sublists(rest)
 
 
 #############################################################
