@@ -15,7 +15,7 @@ class Int:
         return str(self.n)
 
 
-class Plus:
+class BinOp:
     def __init__(self, op1, op2):
         self.op1 = op1
         self.op2 = op2
@@ -25,7 +25,17 @@ class Plus:
 
     def num_nodes(self):
         return 1 + self.op1.num_nodes() + self.op2.num_nodes()
+    
+    @abstractmethod
+    def eval(self):
+        raise NotImplementedError
 
+    @abstractmethod
+    def __str__(self):
+        raise NotImplementedError
+
+
+class Plus(BinOp):
     def eval(self):
         op1_value = self.op1.eval()
         op2_value = self.op2.eval()
@@ -39,17 +49,7 @@ class Plus:
         return f"({op1_str} + {op2_str})"
 
 
-class Times:
-    def __init__(self, op1, op2):
-        self.op1 = op1
-        self.op2 = op2
-
-    def is_const(self):
-        return False
-
-    def num_nodes(self):
-        return 1 + self.op1.num_nodes() + self.op2.num_nodes()
-
+class Times(BinOp):
     def eval(self):
         op1_value = self.op1.eval()
         op2_value = self.op2.eval()
@@ -62,17 +62,8 @@ class Times:
 
         return f"({op1_str} * {op2_str})"
 
-class Minus:
-    def __init__(self, op1, op2):
-        self.op1 = op1
-        self.op2 = op2
 
-    def is_const(self):
-        return False
-
-    def num_nodes(self):
-        return 1 + self.op1.num_nodes() + self.op2.num_nodes()
-
+class Minus(BinOp):
     def eval(self):
         op1_value = self.op1.eval()
         op2_value = self.op2.eval()
@@ -85,17 +76,8 @@ class Minus:
 
         return f"({op1_str} - {op2_str})"
 
+
 class Divide:
-    def __init__(self, op1, op2):
-        self.op1 = op1
-        self.op2 = op2
-
-    def is_const(self):
-        return False
-
-    def num_nodes(self):
-        return 1 + self.op1.num_nodes() + self.op2.num_nodes()
-
     def eval(self):
         op1_value = self.op1.eval()
         op2_value = self.op2.eval()
