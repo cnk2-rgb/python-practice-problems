@@ -4,9 +4,11 @@ class Empty:
         # nothing to do!
         pass
 
+    @property
     def is_empty(self):
         return True
 
+    @property
     def is_leaf(self):
         return False
 
@@ -30,11 +32,13 @@ class Node:
         self.left = left
         self.right = right
 
+    @property
     def is_empty(self):
         return False
 
+    @property
     def is_leaf(self):
-        return self.left.is_empty() and self.right.is_empty()
+        return self.left.is_empty and self.right.is_empty
 
     def num_nodes(self):
         return 1 + self.left.num_nodes() + self.right.num_nodes()
@@ -51,32 +55,36 @@ class Node:
             return True
 
     def inorder(self):
+        #print(self.height())
+        #print(self.value)
         if self.is_leaf:
             print("entering base")
-            return []
+            return [self.value]
         else:
             print("entering recursive case")
-            if not self.left.is_empty():
+            if not self.left.is_empty:
                 print("entering left case")
-                left = [self.value] + self.left.inorder()
+                print(self.value)
+                left = self.left.inorder() + [self.value]
             else:
                 left = []
-            if not self.right.is_empty():
+            if not self.right.is_empty:
                 print("entering right...")
                 right = self.right.inorder()
             else:
                 right = []
+            print(left + right)
             return left + right
             
             
 
     def min_item(self):
-        if self.left.is_empty():
+        if self.left.is_empty:
             return self.value
         return self.left.min_item()
 
     def max_item(self):
-        if self.right.is_empty():
+        if self.right.is_empty:
             return self.value
         return self.right.max_item()
 
