@@ -51,17 +51,24 @@ class Node:
             return True
 
     def inorder(self):
-        #if self.is_leaf:
-            #print("entering base")
-            #return []
-        #else:
-            #print(self.value)
-        if not self.left.is_empty():
-            print("entering left case")
-            return [self.value] + self.left.inorder()
-        if not self.right.is_empty():
-            print("entering right...")
-            return [self.value] + self.right.inorder()
+        if self.is_leaf:
+            print("entering base")
+            return []
+        else:
+            print("entering recursive case")
+            if not self.left.is_empty():
+                print("entering left case")
+                left = [self.value] + self.left.inorder()
+            else:
+                left = []
+            if not self.right.is_empty():
+                print("entering right...")
+                right = self.right.inorder()
+            else:
+                right = []
+            return left + right
+            
+            
 
     def min_item(self):
         if self.left.is_empty():
