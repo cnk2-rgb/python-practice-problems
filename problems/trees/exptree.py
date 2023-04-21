@@ -1,3 +1,5 @@
+from abc import abstractmethod
+
 class Int:
     def __init__(self, n):
         self.n = n
