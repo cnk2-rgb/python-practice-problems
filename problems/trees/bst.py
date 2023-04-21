@@ -50,6 +50,39 @@ class Node:
         else:
             return True
 
+    def inorder(self):
+        #if self.is_leaf:
+            #print("entering base")
+            #return []
+        #else:
+            #print(self.value)
+        if not self.left.is_empty():
+            print("entering left case")
+            return [self.value] + self.left.inorder()
+        if not self.right.is_empty():
+            print("entering right...")
+            return [self.value] + self.right.inorder()
+
+    def min_item(self):
+        if self.left.is_empty():
+            return self.value
+        return self.left.min_item()
+
+    def max_item(self):
+        if self.right.is_empty():
+            return self.value
+        return self.right.max_item()
+
+    def balance_factor(self):
+        right_height = self.right.height()
+        left_height = self.left.height()
+
+        return right_height - left_height
+
+    def balanced_everywhere(self):
+        self.balance_factor()
+
+
     def insert(self, n):
         if n < self.value:
             return Node(self.value, self.left.insert(n), self.right)
